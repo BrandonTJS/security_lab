@@ -19,14 +19,16 @@ var db = require("./database.js");
 
 function addMemos(req,res,next)
 {
-   var memo = db.sanitize(req.body.memo);
+   var memo = db.sanitize(encodeHTML(req.body.memo);
    
 
    var q = "INSERT INTO Memos(memo) VALUES ( '" + memo + "' )";
    db.query(q,function(e1,d1) { addMemos1(req,res,next,e1,d1); });
 }
 
-
+function encodeHTML(s) {
+   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
 
 
 function addMemos1(req,res,next,err,data)
