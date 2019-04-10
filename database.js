@@ -20,7 +20,7 @@ var pool = adb.createPool(process.env.DB_CONNECT,{ min : 1, max : 4 });
 
 
 function conn(){
-   return pool
+   return pool.getConnection()
 }
 
 /********************************************************************************/
