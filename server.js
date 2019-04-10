@@ -112,9 +112,9 @@ function setup()
    app.post("/memos", memos.addMemos);
 
    // Handle redirect for learning resources link
-   app.get("/learn", function(req, res, next) {
-	      return res.redirect(req.query.url);
-	    });
+   //app.get("/learn", function(req, res, next) {
+	//      return res.redirect(req.query.url);
+	//    });
 
    // Error handling middleware
    app.use(errorHandler);
