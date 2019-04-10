@@ -65,11 +65,11 @@ function handleProfileUpdate(req,res,next)
 {
    var firstname = db.sanitize(req.body.firstName);
    var lastname = db.sanitize(req.body.lastName);
-   var ssn = db.sanitize(req.body.ssn);
-   var dob = db.sanitize(req.body.dob);
-   var address = db.sanitize(req.body.address);
-   var bankAcc = db.sanitize(req.body.bankAcc);
-   var bankRouting = db.sanitize(req.body.bankRouting);
+   //var ssn = db.sanitize(req.body.ssn);
+   //var dob = db.sanitize(req.body.dob);
+   //var address = db.sanitize(req.body.address);
+   //var bankAcc = db.sanitize(req.body.bankAcc);
+   var bankRouting = req.body.bankRouting;
 
    var regexPattern = /([0-9]+)+\#/;
    // Allow only numbers with a suffix of the letter #, for example: 'XXXXXX#'
