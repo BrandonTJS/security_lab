@@ -25,9 +25,10 @@ var db = require("./database.js");
 
 function displayAllocations(req,res,next)
 {
-   var userId = req.params.userId;
+   var userId = db.escape(req.params.userId);
    
    var threshold = req.query.threshold;
+
  
    var q = "SELECT * FROM Allocations WHERE userId = " + userId;
    if (threshold) {

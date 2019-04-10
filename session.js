@@ -89,8 +89,8 @@ function displayLoginPage(req,res)
 
 function handleLoginRequest(req,res,next)
 {
-   var username = req.body.userName;
-   var password = req.body.password;
+   var username = db.escape(req.body.userName);
+   var password = db.escape(req.body.password);
 
    var q = "SELECT * FROM User U WHERE U.userName = '" + username + "'";
    db.query(q,function (e1,d1) { handleLoginRequest1(req,res,next,e1,d1); } );
@@ -199,7 +199,7 @@ function handleSignup(req,res,next)
     };
 
    if (validateSignup(userName, firstName, lastName, password, verify, email, errors)) {
-      var q = "SELECT * FROM User U WHERE U.userName = '" + userName + "'";
+      var q = "SELECT * FROM User U WHERE U.userName = '" + db.escape(userName) + "'";
       db.query(q,function (e1,d1) { handleSignup1(req,res,next,errors,e1,d1); });
     }
     else {
@@ -211,12 +211,12 @@ function handleSignup(req,res,next)
 
 function handleSignup1(req,res,next,errors,err,data)
 {
-   var email = req.body.email;
-   var userName = req.body.userName;
-   var firstName = req.body.firstName;
-   var lastName = req.body.lastName;
-   var password = req.body.password;
-   var verify = req.body.verify;   
+   var email = db.escape(req.body.email);
+   var userName = db.escape(req.body.userName);
+   var firstName = db.escape(req.body.firstName);
+   var lastName = db.escape(req.body.lastName);
+   var password = db.escape(req.body.password);
+   var verify = db.escape(req.body.verify);   
    
    if (err != null) return next(err);
    if (data.rows.length != 0) {
@@ -236,7 +236,7 @@ function handleSignup2(req,res,next,err,data)
 {
    if (err != null) return next(err);
    
-   var userName = req.body.userName;
+   var userName = db.escape(req.body.userName);
    
    var q = "SELECT * FROM User U WHERE U.userName = '" + userName + "'";
    db.query(q,function (e1,d1) { handleSignup3(req,res,next,e1,d1); } );
