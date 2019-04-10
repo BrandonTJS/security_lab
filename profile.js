@@ -46,6 +46,18 @@ function displayProfile1(req,res,next,succ,err,data)
 
    var doc = data.rows[0];
    doc.userId = req.session.userId;
+
+   var date = doc.dob;
+   if (date != undefined){
+     var mon = date.getMonth() + 1;
+     if (mon < 10) mon = "0"+mon;
+     var string = date.getFullYear() + "-" + mon + "-" + date.getDate();
+     console.log("CONVERT",date,string);
+     doc.dob = string;
+   } else {
+      doc.dob = "Nil";
+   }
+
    if (succ) doc.updateSuccess = true;
    
    return res.render("profile",doc);
