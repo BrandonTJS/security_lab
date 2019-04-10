@@ -51,7 +51,7 @@ function displayProfile1(req,res,next,succ,err,data)
    if (date != undefined){
      var mon = date.getMonth() + 1;
      if (mon < 10) mon = "0"+mon;
-     var string = date.getFullYear() + "-" + mon + "-" + date.getDate();
+     var string = date.getFullYear() + "-" + mon + "-" + ('0' + date.getDate()).slice(-2);
      console.log("CONVERT",date,string);
      doc.dob = string;
    } else {
