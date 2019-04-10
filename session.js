@@ -77,7 +77,8 @@ function displayLoginPage(req,res)
 {
    return res.render("login", { userName: "",
 				password: "",
-				loginError: "" });
+            loginError: "",
+            uptime: process.uptime()});
 }
 
 
@@ -111,14 +112,16 @@ function handleLoginRequest1(req,res,next,err,data)
    else if (data.rows.length != 1) {
       return res.render("login", { userName : username,
 				      password : "",
-				      loginError : invalidUserNameErrorMessage } );
+				      loginError : invalidUserNameErrorMessage,
+                  uptime: process.uptime() } );
     }
    else {
       var userdata = data.rows[0];
       if (!comparePassword(password,userdata.password)) {
 	 return res.render("login", { userName : username,
 				      password : "",
-				      loginError : invalidPasswordErrorMessage } );
+				      loginError : invalidPasswordErrorMessage,
+                  uptime: process.uptime() } );
        }
 
       req.session.userId = userdata.userId;
