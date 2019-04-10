@@ -19,8 +19,8 @@ var adb = require("any-db");
 var pool = adb.createPool(process.env.DB_CONNECT,{ min : 1, max : 4 });
 
 
-function conn(){
-   return pool.getConnection()
+function sanitize(unclean){
+   return adb.escape(unclean)
 }
 
 /********************************************************************************/
@@ -81,7 +81,7 @@ function fixQuery(q)
 /********************************************************************************/
 
 exports.query = query;
-exports.conn = conn;
+exports.sanitize = sanitize;
 
 
 
