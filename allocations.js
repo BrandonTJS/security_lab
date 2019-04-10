@@ -27,7 +27,7 @@ function displayAllocations(req,res,next)
 {
    var userId = db.sanitize(req.params.userId);
    
-   var threshold = req.query.threshold;
+   var threshold = parseInt(req.query.threshold);
 
  
    var q = "SELECT * FROM Allocations WHERE userId = " + userId;
