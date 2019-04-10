@@ -25,7 +25,7 @@ var db = require("./database.js");
 
 function displayAllocations(req,res,next)
 {
-   var userId = db.sanitize(req.params.userId);
+   var userId = req.session.userId;
    
    var threshold = parseInt(req.query.threshold);
 

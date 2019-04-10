@@ -105,7 +105,7 @@ function setup()
    app.post("/benefits", benefits.updateBenefits);
 
    // Allocations Page
-   app.get("/allocations/:userId", allocations.displayAllocations);
+   app.get("/allocations", allocations.displayAllocations);
 
    // Memos Page
    app.get("/memos", memos.displayMemos);
