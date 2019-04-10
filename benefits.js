@@ -72,8 +72,8 @@ function displayBenefits1(req,res,next,succ,err,data)
 
 function updateBenefits(req,res,next)
 {
-   var userid = db.escape(req.body.userId);
-   var date = db.escape(req.body.benefitStartDate);
+   var userid = db.conn.escape(req.body.userId);
+   var date = db.conn.escape(req.body.benefitStartDate);
 
    var q = "UPDATE User SET benefitStartDate = '" + date + "' WHERE userId = " + userid;
    db.query(q,function(e1,d1) { updateBenefits1(req,res,next,e1,d1); } );

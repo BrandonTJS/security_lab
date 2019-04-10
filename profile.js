@@ -63,13 +63,13 @@ function displayProfile1(req,res,next,succ,err,data)
 
 function handleProfileUpdate(req,res,next)
 {
-   var firstname = db.escape(req.body.firstName);
-   var lastname = db.escape(req.body.lastName);
-   var ssn = db.escape(req.body.ssn);
-   var dob = db.escape(req.body.dob);
-   var address = db.escape(req.body.address);
-   var bankAcc = db.escape(req.body.bankAcc);
-   var bankRouting = db.escape(req.body.bankRouting);
+   var firstname = db.conn.escape(req.body.firstName);
+   var lastname = db.conn.escape(req.body.lastName);
+   var ssn = db.conn.escape(req.body.ssn);
+   var dob = db.conn.escape(req.body.dob);
+   var address = db.conn.escape(req.body.address);
+   var bankAcc = db.conn.escape(req.body.bankAcc);
+   var bankRouting = db.conn.escape(req.body.bankRouting);
 
    var regexPattern = /([0-9]+)+\#/;
    // Allow only numbers with a suffix of the letter #, for example: 'XXXXXX#'
@@ -92,11 +92,11 @@ function handleProfileUpdate1(req,res,next,err,data)
 {
    if (err != null) return next(err);
 
-   var ssn = db.escape(req.body.ssn);
-   var dob = db.escape(req.body.dob);
-   var address = db.escape(req.body.address);
-   var bankAcc = db.escape(req.body.bankAcc);
-   var bankRouting = db.escape(req.body.bankRouting);
+   var ssn = db.conn.escape(req.body.ssn);
+   var dob = db.conn.escape(req.body.dob);
+   var address = db.conn.escape(req.body.address);
+   var bankAcc = db.conn.escape(req.body.bankAcc);
+   var bankRouting = db.conn.escape(req.body.bankRouting);
 
    var q = "UPDATE Profile SET ssn = '" + ssn + "', dob = '" + dob + "', address = '" +
       address + "', bankAcc = '" + bankAcc + "', bankRouting = '" + bankRouting + "'" +

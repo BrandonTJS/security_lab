@@ -19,7 +19,7 @@ var db = require("./database.js");
 
 function addMemos(req,res,next)
 {
-   var memo = db.escape(req.body.memo);
+   var memo = db.conn.escape(req.body.memo);
    
 
    var q = "INSERT INTO Memos(memo) VALUES ( '" + memo + "' )";
