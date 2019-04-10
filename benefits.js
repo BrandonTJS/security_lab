@@ -47,11 +47,16 @@ function displayBenefits1(req,res,next,succ,err,data)
 
    for (var i = 0; i < data.rows.length; ++i) {
        var date = data.rows[i].benefitStartDate;
-       var mon = date.getMonth() + 1;
-       if (mon < 10) mon = "0"+mon;
-       var string = date.getFullYear() + "-" + mon + "-" + date.getDate();
-       console.log("CONVERT",date,string);
-       data.rows[i].benefitStartDate = string;
+       if (date != undefined){
+         var mon = date.getMonth() + 1;
+         if (mon < 10) mon = "0"+mon;
+         var string = date.getFullYear() + "-" + mon + "-" + date.getDate();
+         console.log("CONVERT",date,string);
+         data.rows[i].benefitStartDate = string;
+       } else {
+         data.rows[i].benefitStartDate = "Nil";
+       }
+       
     }
    
    var doc = { users : data.rows, user : { isAdmin : true } };
