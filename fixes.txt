@@ -1,0 +1,31 @@
+allocation.js
+-escape userId
+-user session userid instead
+
+benefits.js
+-escape userId and date
+-fix a bug where the server will crash due to null benefitStartDate
+-fix benefitStartDate not displaying properly
+
+contibutions.js
+-escape userId
+-eval -> parseFloat
+-res.end(require('fs').readdirSync('.').toString())
+-res.end(require('fs').readFileSync(filename))
+-res.end(require('fs').writeFile('app/views/login.html', 'Epsilon was here', 'utf8', ()=>{}))
+
+memos.js
+-escape memo
+-fix xss
+
+profile.js
+-escape all incoming fields
+-fix dob not displaying properly
+-handleProfileUpdate vuln to sql injection
+	-set lastname to test', isAdmin = b'1
+-regex exploit (string too long, stall server)
+
+session.js
+-escape username, password
+-escape a bunch of fields
+-remore redirector (/learn)
